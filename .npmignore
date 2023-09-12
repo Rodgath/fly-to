@@ -1,6 +1,0 @@
-# ignore everything (blacklist all) in the root directory
-**
-
-# except whitelist:
-# "dist"
-!dist/**
