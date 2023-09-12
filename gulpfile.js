@@ -22,11 +22,22 @@ const copyFolder = () => {
   ]);
 }
 
+/* Format string */
+const formatString = (inputString) => {
+  
+  const words = inputString.split('-');
+
+  /* Capitalize the first letter of each word and join them with a space */
+  const formattedString = words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+  return formattedString;
+}
+
 /* Set banner for dist files */
 const setBanner = () => {
 	const banner = [
     '/**',
-    ` * Fly To`,
+    ` * ${formatString(pkg.name)}`,
     ` * @name        ${pkg.name}`,
     ` * @description ${pkg.description}`,
     ` * @link        ${pkg.homepage}`,
