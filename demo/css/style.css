@@ -234,6 +234,9 @@ body {
   font-size: 30px;
   color: #333;
 }
+
+.cart-icon svg {
+  transform: scaleX(-1)
 }
 
 .cart-items {
