@@ -6,7 +6,7 @@
  * @author      Rodgath, https://Rodgath.com
  * @version     v1.0.1
  * @created     Sep 12, 2023
- * @updated     Sep 16, 2023
+ * @updated     Sep 12, 2023
  * @copyright   Copyright (C) 2023-2023, Rodgath
  * @license     MIT
  * @licenseMIT  https://github.com/Rodgath/fly-to/blob/main/LICENSE
@@ -24,15 +24,18 @@ function flyTo(flyer, flyTo) {
   flyerClone.style.zIndex = 9999;
   document.body.appendChild(flyerClone);
 
-  const targetWidth = flyTo.offsetWidth;
-  const targetHeight = flyTo.offsetWidth;
-  const currentWidth = flyer.offsetWidth;
-  const currentHeight = flyer.offsetWidth;
-
-  const targetX = flyTo.offsetLeft;
-  const targetY = flyTo.offsetTop;
-  const currentX = flyer.offsetLeft;
-  const currentY = flyer.offsetTop;
+  const ft = flyTo.getBoundingClientRect(); // Fly to element (target element)
+  const f = flyer.getBoundingClientRect(); // Flying element
+  
+  const targetWidth = ft.width;
+  const targetHeight = ft.height;
+  const currentWidth = f.width;
+  const currentHeight = f.height;
+  
+  const targetX = ft.left + document.scrollingElement.scrollLeft;
+  const targetY = ft.top + document.scrollingElement.scrollTop;
+  const currentX = f.left + document.scrollingElement.scrollLeft;
+  const currentY = f.top + document.scrollingElement.scrollTop;
 
   const targetOpacity = 0.3;
   const currentOpacity = 1;

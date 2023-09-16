@@ -10,15 +10,18 @@ function flyTo(flyer, flyTo) {
   flyerClone.style.zIndex = 9999;
   document.body.appendChild(flyerClone);
 
-  const targetWidth = flyTo.offsetWidth;
-  const targetHeight = flyTo.offsetWidth;
-  const currentWidth = flyer.offsetWidth;
-  const currentHeight = flyer.offsetWidth;
-
-  const targetX = flyTo.offsetLeft;
-  const targetY = flyTo.offsetTop;
-  const currentX = flyer.offsetLeft;
-  const currentY = flyer.offsetTop;
+  const ft = flyTo.getBoundingClientRect(); // Fly to element (target element)
+  const f = flyer.getBoundingClientRect(); // Flying element
+  
+  const targetWidth = ft.width;
+  const targetHeight = ft.height;
+  const currentWidth = f.width;
+  const currentHeight = f.height;
+  
+  const targetX = ft.left + document.scrollingElement.scrollLeft;
+  const targetY = ft.top + document.scrollingElement.scrollTop;
+  const currentX = f.left + document.scrollingElement.scrollLeft;
+  const currentY = f.top + document.scrollingElement.scrollTop;
 
   const targetOpacity = 0.3;
   const currentOpacity = 1;
