@@ -85,7 +85,14 @@
           <div class="accordion-content hidden">
             <p>Add this code anywhere in your markup.</p>
             <div class="code-box">
-              <pre><code class="language-html"></code></pre>
+              <pre><code class="language-html">&lt;div class=&quot;product-grid&quot;&gt;
+  &lt;div class=&quot;product&quot;&gt;
+    &lt;img src=&quot;./images/01.jpg&quot; alt=&quot;Product 1&quot;&gt;
+    &lt;h2&gt;Product 1&lt;/h2&gt;
+    &lt;p class=&quot;price&quot;&gt;$19.99&lt;/p&gt;
+    &lt;button class=&quot;add-to-cart&quot;&gt;Add to Cart&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
             </div>
 
           </div>
@@ -95,7 +102,24 @@
           <div class="accordion-content hidden">
             <p>Add this code before the <mark>&lt;/body&gt;</mark> tag in your markup.</p>
             <div class="code-box">
-              <pre><code class="language-javascript"></code></pre>
+              <pre><code class="language-javascript">&lt;script&gt;
+  document.addEventListener(&#39;DOMContentLoaded&#39;, function () {
+    
+    const addToCartButtons = document.querySelectorAll(&#39;.add-to-cart&#39;);
+
+    addToCartButtons.forEach(function (button) {
+      button.addEventListener(&#39;click&#39;, function () {
+      
+        const productContainer = this.closest(&#39;.product&#39;);
+        
+        const productImage = productContainer.querySelector(&#39;img&#39;);
+        
+        /* Implement FlyTo */
+        flyTo(productImage, document.querySelector(&#39;.cart-dropdown&#39;));
+      });
+    });
+  });
+&lt;/script&gt;</code></pre>
             </div>
 
           </div>
@@ -128,6 +152,7 @@
             
             const productImage = productContainer.querySelector('img');
             
+            /* Implement FlyTo */
             flyTo(productImage, document.querySelector('.cart-dropdown'));
           });
         });
