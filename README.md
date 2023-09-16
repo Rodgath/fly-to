@@ -43,7 +43,7 @@ Fly a DOM element to another element.
 # Implementation
 
 #### Initializing with `flyTo` function. [View Demo](https://rodgath.github.io/fly-to/demo/index.html)
-Your HTML code of upto 36 images
+Your HTML markup.
 ```html
 <div class="fly-to-element"></div>
 <div class="fly-from-element"></div>
