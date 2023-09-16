@@ -46,7 +46,7 @@ Fly a DOM element to another element.
 Your HTML markup.
 ```html
 <div class="fly-to-element"></div>
-<div class="fly-from-element"></div>
+<div class="flying-element"></div>
 ```
 
 #### Call the `flyTo()` function with two arguments.
@@ -56,10 +56,10 @@ Your HTML markup.
 ```javascript
 document.addEventListener('DOMContentLoaded', function() {
   
-  const flyFromElement = document.querySelector('.fly-from-element');
+  const flyingElement = document.querySelector('.flying-element');
   const flyToElement = document.querySelector('.fly-to-element');
 
-  flyTo(flyFromElement, flyToElement);
+  flyTo(flyingElement, flyToElement);
   
 });
 ```
