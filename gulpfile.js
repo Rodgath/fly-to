@@ -89,7 +89,6 @@ const buildTask = () => {
 
 /* Tasks */
 task('copy:demo', copyFolder());
-task('set:banner', setBanner);
 task('compress:js', compressJs);
 task('watch', watchTask);
 task('build', buildTask());
