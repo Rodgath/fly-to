@@ -33,29 +33,37 @@ const formatString = (inputString) => {
   return formattedString;
 }
 
+/* Banner crest */
+const banner = [
+  '/**',
+  ` * ${formatString(pkg.name)}`,
+  ` * @name        ${pkg.name}`,
+  ` * @description ${pkg.description}`,
+  ` * @link        ${pkg.homepage}`,
+  ` * @author      ${pkg.author.name}, ${pkg.author.web}`,
+  ` * @version     v${pkg.version}`,
+  ` * @created     Sep 12, 2023`,
+  ` * @updated     Sep 17, ${new Date().getFullYear()}`,
+  ` * @copyright   Copyright (C) 2023-${new Date().getFullYear()}, ${pkg.author.name}`,
+  ` * @license     ${pkg.license}`,
+  ` * @licenseMIT  ${pkg.homepage}/blob/main/LICENSE`,
+  ` * @demoExample https://rodgath.github.io/fly-to/demo/`,  
+  ' */',
+  ''
+].join('\n');
+
 /* Set banner for dist files */
-const setBanner = () => {
-	const banner = [
-    '/**',
-    ` * ${formatString(pkg.name)}`,
-    ` * @name        ${pkg.name}`,
-    ` * @description ${pkg.description}`,
-    ` * @link        ${pkg.homepage}`,
-    ` * @author      ${pkg.author.name}, ${pkg.author.web}`,
-    ` * @version     v${pkg.version}`,
-    ` * @created     Sep 12, 2023`,
-    ` * @updated     Sep 17, ${new Date().getFullYear()}`,
-    ` * @copyright   Copyright (C) 2023-${new Date().getFullYear()}, ${pkg.author.name}`,
-    ` * @license     ${pkg.license}`,
-    ` * @licenseMIT  ${pkg.homepage}/blob/main/LICENSE`,
-    ` * @demoExample https://rodgath.github.io/fly-to/demo/`,  
-    ' */',
-    ''
-  ].join('\n');
-  
+const setBannerDist = () => {
 	return src('./dist/{css,js}/**/*.{js,css}')
   .pipe(header(banner))
   .pipe(dest('./dist'))
+}
+
+/* Set banner for demo files */
+const setBannerDemo = () => {
+	return src('./demo/{css,js}/**/fly-to*.{js,css}')
+  .pipe(header(banner))
+  .pipe(dest('./demo'))
 }
 
 const compressJs = () => {
@@ -72,11 +80,11 @@ const compressJs = () => {
 }
 
 const watchTask = () => {
-  watch(['./src/*.js', './demo/*.html'], { events: 'all' }, series(compressJs, setBanner))
+  watch(['./src/*.js', './demo/*.html'], { events: 'all' }, series(compressJs, setBannerDist, setBannerDemo))
 }
 
 const buildTask = () => {
-  return series(compressJs, setBanner)
+  return series(compressJs, setBannerDist, setBannerDemo)
 }
 
 /* Tasks */
