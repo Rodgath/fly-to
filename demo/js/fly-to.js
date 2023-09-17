@@ -1,3 +1,17 @@
+/**
+ * Fly To
+ * @name        fly-to
+ * @description Fly a DOM element to another element
+ * @link        https://github.com/Rodgath/fly-to
+ * @author      Rodgath, https://Rodgath.com
+ * @version     v1.0.2
+ * @created     Sep 12, 2023
+ * @updated     Sep 17, 2023
+ * @copyright   Copyright (C) 2023-2023, Rodgath
+ * @license     MIT
+ * @licenseMIT  https://github.com/Rodgath/fly-to/blob/main/LICENSE
+ * @demoExample https://rodgath.github.io/fly-to/demo/
+ */
 function flyTo(flyer, flyTo) {
 
   let flyerClone = flyer.cloneNode(true);
